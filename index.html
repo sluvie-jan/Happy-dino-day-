@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário, Minha Fadinha</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        img {
+            width: 60%;
+            max-height: 70vh;
+            object-fit: cover;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3700b3;
+        }
+        .mensagem {
+            margin-top: 20px;
+            font-size: 20px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <img id="slide" src="foto1.jpg" alt="Foto especial">
+    </div>
+    
+    <div class="mensagem">
+        <p>Minha fadinha linda, hoje é um dia muito especial, o dia em que o mundo foi presenteado com a sua luz! ✨ Você ilumina a vida de todos ao seu redor e merece tudo de mais maravilhoso. Que este novo ciclo traga muita alegria, amor e sonhos realizados! 💜 Feliz aniversário!</p>
+    </div>
+    
+    <audio id="musica" src="best-of-me.mp3"></audio>
+    <button onclick="document.getElementById('musica').play()">Tocar Música</button>
+    
+    <script>
+        // Troca de imagens a cada 3 segundos
+        const imagens = ["foto1.jpg", "foto2.jpg", "foto3.jpg"];
+        let index = 0;
+        function trocarImagem() {
+            index = (index + 1) % imagens.length;
+            document.getElementById("slide").src = imagens[index];
+        }
+        setInterval(trocarImagem, 3000);
+        
+        // Criar estrelas cadentes
+        function criarEstrelas() {
+            for (let i = 0; i < 30; i++) {
+                let estrela = document.createElement("div");
+                estrela.classList.add("star");
+                estrela.style.left = Math.random() * 100 + "vw";
+                estrela.style.animationDuration = (Math.random() * 2 + 1) + "s";
+                document.querySelector(".stars").appendChild(estrela);
+            }
+        }
+        criarEstrelas();
+    </script>
+</body>
+</html>
